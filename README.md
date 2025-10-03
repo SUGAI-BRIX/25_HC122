@@ -226,9 +226,8 @@ class BrixRegression6CH_Deep(nn.Module):
         x = self.global_pool(x)
         x = self.fc(x)
         return x.squeeze(1)
-
-- 소스코드 설명 : 모델 훈련 코드입니다.
 ```
+- 소스코드 설명 : 모델 훈련 코드입니다.
 
 ```python
 # ===============================
