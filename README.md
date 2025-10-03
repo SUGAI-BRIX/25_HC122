@@ -71,9 +71,9 @@
 
 ---
 
-| 사진 | <img src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" width="100px" /> |  |  |  |  |  |
-| 팀원 | 팀원1 | 팀원2 | 팀원3 | 팀원4 | 팀원5 | 멘토 |
+| 사진 |  |  | <img src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" width="100px" /> |  |  |  |
 | ---- | ----- | ----- | ----- | ----- | ----- | ---- |
+| 팀원 | 팀원1 | 팀원2 | 팀원3 | 팀원4 | 팀원5 | 멘토 |
 | 역할 | AI 개발 · 프로젝트 총괄 | AI 개발 · HW 총괄 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 | 프로젝트 총괄 |
 
 
