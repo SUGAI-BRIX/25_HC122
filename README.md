@@ -98,7 +98,6 @@
 
 ---
 
-> 참고: 썸네일과 유튜브 영상을 등록하는 방법입니다.
 > [![[2025 한이음 드림업 공모전 시연 영상] RGB카메라와 인공지능을 활용한 과일 당도 측정 서비스](https://github.com/user-attachments/assets/29ce26e5-8a5a-434a-968f-6fadf12712d2)](https://youtu.be/2iMyMO82c9s?si=YAMznI-zBLoh6I4d)
 
 ---
