@@ -228,6 +228,7 @@ class BrixRegression6CH_Deep(nn.Module):
         return x.squeeze(1)
 
 - 소스코드 설명 : 모델 훈련 코드입니다.
+```
 
 ```python
 # ===============================
@@ -297,3 +298,5 @@ def train_kfold(
 
             val_mae = mean_absolute_error(val_trues, val_preds)
             print(f"[Fold {fold}][Epoch {epoch}] TrainLoss={run_loss/len(train_loader.dataset):.4f}, ValMAE={val_mae:.4f}")
+```
+
