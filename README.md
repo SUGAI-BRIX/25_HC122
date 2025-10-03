@@ -108,20 +108,6 @@
 - 소스코드 설명 : CNN 기반의 6채널 입력 모델 구조를 정의한 코드입니다.
 
 ```python
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader, Subset
-from sklearn.model_selection import KFold
-from sklearn.metrics import mean_absolute_error, mean_squared_error
-import numpy as np
-import cv2 # BGR -> RGB -> HSV
-import albumentations as A # 이미지 증강
-from albumentations.pytorch import ToTensorV2 # Numpy Ndarray -> Pytorch Tensor
-import matplotlib.pyplot as plt
-
-print(torch.cuda.is_available())
-
 # ===============================
 #  RGB + HSV (6채널) 데이터셋 클래스
 # ===============================
