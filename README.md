@@ -1,4 +1,4 @@
-# 25_HC122
+<img width="668" height="625" alt="image" src="https://github.com/user-attachments/assets/b1662fa6-1b35-4a13-b001-06aeef10b1a8" /># 25_HC122
 2025년 한이음 드림업 프로젝트 : BRIX 🍓 - RGB 카메라와 AI 기반 과일 당도 예측 및 자동 분류 시스템  (25_HC122)
 
 --- 
@@ -86,7 +86,7 @@
 > 
 - 서비스 구성도
 
-![서비스 구성도](https://github.com/user-attachments/assets/26ce99e6-57a7-4e04-8959-7a680600c8b4)
+![서비스 구성도](https://github.com/user-attachments/assets/144ad0fc-9c29-4c74-a2ab-00be34092475)
 
 - 엔티티 관계도
 
@@ -98,7 +98,7 @@
 
 ---
 
-> [![[2025 한이음 드림업 공모전 시연 영상] RGB카메라와 인공지능을 활용한 과일 당도 측정 서비스](https://github.com/user-attachments/assets/29ce26e5-8a5a-434a-968f-6fadf12712d2)](https://youtu.be/2iMyMO82c9s?si=YAMznI-zBLoh6I4d)
+> [![[2025 한이음 드림업 공모전 시연 영상] RGB카메라와 인공지능을 활용한 과일 당도 측정 서비스](https://github.com/user-attachments/assets/e1e84ff0-4696-4299-93a6-c3238927da3c)](https://youtu.be/2iMyMO82c9s?si=YAMznI-zBLoh6I4d)
 
 ---
 
