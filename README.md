@@ -12,8 +12,7 @@
 - 프로젝트 명 : RGB 카메라와 AI 기반 과일 당도 예측 및 자동 분류 시스템
 - 프로젝트 정의 : RGB 카메라와 AI 모델(CNN + YOLO)을 활용하여 과일의 당도를 비파괴적으로 측정하고, Jetson Nano 기반 자동 분류 장치 및 모바일 직거래 플랫폼과 연동하는 스마트 농업 서비스
     
-    ![image](<img width="895" height="507" alt="image" src="https://github.com/user-attachments/assets/6be524a9-c0c1-48b7-8741-1216298f2768" />
-)
+    ![프로젝트 이미지](https://github.com/user-attachments/assets/6be524a9-c0c1-48b7-8741-1216298f2768)
     
 
 **1-2. 개발 배경 및 필요성**
