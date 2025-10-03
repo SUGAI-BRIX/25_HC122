@@ -105,4 +105,195 @@
 
 ---
 
-- 소스코드 설명 : CNN을 활용하여 과일 당도값을 예측하는 코드입니다.
+- 소스코드 설명 : CNN 기반의 6채널 입력 모델 구조를 정의한 코드입니다.
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader, Subset
+from sklearn.model_selection import KFold
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
+import cv2 # BGR -> RGB -> HSV
+import albumentations as A # 이미지 증강
+from albumentations.pytorch import ToTensorV2 # Numpy Ndarray -> Pytorch Tensor
+import matplotlib.pyplot as plt
+
+print(torch.cuda.is_available())
+
+# ===============================
+#  RGB + HSV (6채널) 데이터셋 클래스
+# ===============================
+class RGBHSVDataset_Lite(Dataset):
+    def __init__(self, csv_file, img_size=None, transform=None):
+        self.data = pd.read_csv(csv_file)
+        self.img_size = img_size
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.data)
+
+    def _ensure_uint8_hwc(self, img):
+        if isinstance(img, torch.Tensor):
+            img = img.detach().cpu().permute(1, 2, 0).numpy()
+            if img.max() <= 1.0:
+                img = (img * 255.0).clip(0, 255)
+            img = img.astype(np.uint8)
+        else:
+            if img.dtype != np.uint8:
+                if img.max() <= 1.0:
+                    img = (img * 255.0).clip(0, 255).astype(np.uint8)
+                else:
+                    img = img.clip(0, 255).astype(np.uint8)
+        return img
+
+    def __getitem__(self, idx):
+        img_path = self.data.iloc[idx, 0]
+        brix = float(self.data.iloc[idx, 1])
+
+        # 1) 이미지 로드 (BGR)
+        bgr = cv2.imread(img_path)
+        if bgr is None:
+            raise FileNotFoundError(f"Failed to read image: {img_path}")
+        if self.img_size is not None:  
+            bgr = cv2.resize(bgr, self.img_size, interpolation=cv2.INTER_AREA)
+
+        # 2) BGR -> RGB
+        rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
+
+        # 3) Albumentations 증강
+        if self.transform:
+            out = self.transform(image=rgb)
+            rgb = out["image"]
+
+        # 4) uint8 HWC 변환
+        rgb = self._ensure_uint8_hwc(rgb)
+
+        # 5) RGB 정규화 + HSV
+        rgb_f = rgb.astype(np.float32) / 255.0
+        hsv   = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV).astype(np.float32)
+        hsv[..., 0] /= 179.0
+        hsv[..., 1] /= 255.0
+        hsv[..., 2] /= 255.0
+
+        # 6) RGB + HSV → (6, H, W)
+        combined = np.concatenate([rgb_f, hsv], axis=-1)
+        combined = np.transpose(combined, (2, 0, 1))
+        image_tensor = torch.from_numpy(combined).float()
+
+        return image_tensor, torch.tensor(brix, dtype=torch.float32)
+
+# ===============================
+#   6채널 CNN 회귀 모델
+# ===============================
+class BrixRegression6CH_Deep(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+        def conv_block(in_ch, out_ch, p_drop):
+            return nn.Sequential(
+                nn.Conv2d(in_ch, out_ch, 3, padding=1),
+                nn.BatchNorm2d(out_ch),
+                nn.LeakyReLU(),
+                nn.Conv2d(out_ch, out_ch, 3, padding=1),
+                nn.BatchNorm2d(out_ch),
+                nn.LeakyReLU(),
+                nn.MaxPool2d(2),
+                nn.Dropout(p_drop)
+            )
+
+        self.layer1 = conv_block(6, 32, 0.1)
+        self.layer2 = conv_block(32, 64, 0.2)
+        self.layer3 = conv_block(64, 128, 0.3)
+        self.layer4 = conv_block(128, 256, 0.4)
+
+        self.global_pool = nn.AdaptiveAvgPool2d(1)
+
+        self.fc = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(256, 128),
+            nn.LeakyReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(128, 1)
+        )
+
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.layer2(x)
+        x = self.layer3(x)
+        x = self.layer4(x)
+        x = self.global_pool(x)
+        x = self.fc(x)
+        return x.squeeze(1)
+
+- 소스코드 설명 : 모델 훈련 코드입니다.
+
+```python
+# ===============================
+#   K-Fold 학습 루프
+# ===============================
+def train_kfold(
+    csv_file,
+    k=5,
+    epochs=30,
+    batch_size=32,
+    lr=1e-3,
+    img_size=(128, 128),
+    use_augmentation=True,
+    patience=10,
+    save_dir="./best_model"
+):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    os.makedirs(save_dir, exist_ok=True)
+
+    # Transform 정의
+    transform = A.Compose([
+        A.HorizontalFlip(p=0.5) if use_augmentation else A.NoOp(),
+        A.RandomBrightnessContrast(p=0.3) if use_augmentation else A.NoOp(),
+        A.Resize(img_size[0], img_size[1]),
+        ToTensorV2()
+    ])
+
+    dataset = RGBHSVDataset_Lite(csv_file, img_size=None, transform=transform)
+
+    brix_all = dataset.data.iloc[:, 1].astype(float).values
+    y_bins = _make_stratify_bins(brix_all, n_bins=5)
+    skf = StratifiedKFold(n_splits=k, shuffle=True, random_state=42)
+
+    for fold, (tr_idx, va_idx) in enumerate(skf.split(np.arange(len(dataset)), y_bins), start=1):
+        print(f"\n Fold {fold}/{k}")
+
+        train_loader = DataLoader(Subset(dataset, tr_idx), batch_size=batch_size, shuffle=True)
+        val_loader   = DataLoader(Subset(dataset, va_idx), batch_size=1, shuffle=False)
+
+        model = BrixRegression6CH_Deep().to(device)
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=max(10, epochs))
+        criterion = nn.SmoothL1Loss()
+
+        for epoch in range(1, epochs + 1):
+            # ----- Train -----
+            model.train()
+            run_loss = 0.0
+            for images, labels in train_loader:
+                images, labels = images.to(device), labels.to(device)
+                preds = model(images)
+                loss = criterion(preds, labels)
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                run_loss += loss.item() * images.size(0)
+
+            # ----- Validate -----
+            model.eval()
+            val_preds, val_trues = [], []
+            with torch.no_grad():
+                for images, labels in val_loader:
+                    images = images.to(device)
+                    out = model(images)
+                    val_preds.append(out.item())
+                    val_trues.append(float(labels.item()))
+
+            val_mae = mean_absolute_error(val_trues, val_preds)
+            print(f"[Fold {fold}][Epoch {epoch}] TrainLoss={run_loss/len(train_loader.dataset):.4f}, ValMAE={val_mae:.4f}")
