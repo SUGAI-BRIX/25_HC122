@@ -1,5 +1,4 @@
-<img width="668" height="625" alt="image" src="https://github.com/user-attachments/assets/b1662fa6-1b35-4a13-b001-06aeef10b1a8" /># 25_HC122
-2025년 한이음 드림업 프로젝트 : BRIX 🍓 - RGB 카메라와 AI 기반 과일 당도 예측 및 자동 분류 시스템  (25_HC122)
+# 2025년 한이음 드림업 프로젝트 : BRIX 🍓 - RGB 카메라와 AI 기반 과일 당도 예측 및 자동 분류 시스템  (25_HC122)
 
 --- 
 
