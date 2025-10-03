@@ -72,8 +72,8 @@
 ---
 
 | 사진 | <img width="204" height="271" alt="image" src="https://github.com/user-attachments/assets/3346c8e6-08d4-4a39-84f3-093828dd7701" />
- |  | <img src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" width="100px" /> | <img width="413" height="531" alt="image" src="https://github.com/user-attachments/assets/79347fbf-d45c-4f18-a2b5-def33dea79d5" />
- | <img width="576" height="692" alt="image" src="https://github.com/user-attachments/assets/9e265fb2-dc21-4cb8-a592-6bf13ba1d13c" />
+ |  | <img width="204" height="271" src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" /> | <img wwidth="204" height="271" alt="image" src="https://github.com/user-attachments/assets/79347fbf-d45c-4f18-a2b5-def33dea79d5" />
+ | <img width="204" height="271" alt="image" src="https://github.com/user-attachments/assets/9e265fb2-dc21-4cb8-a592-6bf13ba1d13c" />
  |  |
 | ---- | ----- | ----- | ----- | ----- | ----- | ---- |
 | 팀원 | 팀원1 | 팀원2 | 팀원3 | 팀원4 | 팀원5 | 멘토 |
