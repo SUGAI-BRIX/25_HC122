@@ -71,7 +71,7 @@
 
 ---
 
-| 사진 | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/3346c8e6-08d4-4a39-84f3-093828dd7701" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/694a73c0-553a-4ebc-8e71-b669e651957a"  /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/79347fbf-d45c-4f18-a2b5-def33dea79d5" /> | <img width="100" height="170" src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/9e265fb2-dc21-4cb8-a592-6bf13ba1d13c" /> |  |
+| 사진 | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/3346c8e6-08d4-4a39-84f3-093828dd7701" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/4fb8fedf-4f72-4f48-90d3-cfef5df48a18"  /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/79347fbf-d45c-4f18-a2b5-def33dea79d5" /> | <img width="100" height="170" src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/9e265fb2-dc21-4cb8-a592-6bf13ba1d13c" /> |  |
 | ---- | ----- | ----- | ----- | ----- | ----- | ---- |
 | 팀원 | 팀원1 | 팀원2 | 팀원3 | 팀원4 | 팀원5 | 멘토 |
 | 역할 | AI 개발 | AI 개발 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 | 프로젝트 총괄 |
