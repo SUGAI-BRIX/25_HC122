@@ -1,4 +1,4 @@
-# 2025년 한이음 드림업 프로젝트 : BRIX 🍓 - RGB 카메라와 AI 기반 과일 당도 예측 및 자동 분류 시스템  (25_HC122)
+<img width="591" height="827" alt="image" src="https://github.com/user-attachments/assets/988e34e5-0068-41f4-a9b7-85176760959d" /># 2025년 한이음 드림업 프로젝트 : BRIX 🍓 - RGB 카메라와 AI 기반 과일 당도 예측 및 자동 분류 시스템  (25_HC122)
 
 --- 
 
@@ -71,7 +71,8 @@
 
 ---
 
-| 사진 | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/3346c8e6-08d4-4a39-84f3-093828dd7701" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/f0a1f1fd-05ba-4281-bba3-f560878108c0"  /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/79347fbf-d45c-4f18-a2b5-def33dea79d5" /> | <img width="100" height="170" src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/9e265fb2-dc21-4cb8-a592-6bf13ba1d13c" /> |  |
+| 사진 | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/3346c8e6-08d4-4a39-84f3-093828dd7701" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/f0a1f1fd-05ba-4281-bba3-f560878108c0"  /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/79347fbf-d45c-4f18-a2b5-def33dea79d5" /> | <img width="100" height="170" src="https://github.com/user-attachments/assets/6a89cc36-32c4-4145-ab12-6c0339fbd7c1" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/9e265fb2-dc21-4cb8-a592-6bf13ba1d13c" /> | <img width="100" height="170" alt="image" src="https://github.com/user-attachments/assets/0da0b15f-137f-494a-85f9-721835ec0672" />
+" /> |
 | ---- | ----- | ----- | ----- | ----- | ----- | ---- |
 | 팀원 | 팀원1 | 팀원2 | 팀원3 | 팀원4 | 팀원5 | 멘토 |
 | 역할 | AI 개발 | AI 개발 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 | 프로젝트 총괄 |
