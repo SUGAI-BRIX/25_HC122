@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+    <condition>
+        <item>
+            <p_startday>2025-01-13</p_startday>
+            <p_endday>2025-07-13</p_endday>
+            <p_itemcategorycode>200</p_itemcategorycode>
+            <p_itemcode>226</p_itemcode>
+            <p_kindcode>00</p_kindcode>
+            <p_productrankcode>02</p_productrankcode>
+            <p_countycode>1101</p_countycode>
+            <p_convert_kg_yn>Y</p_convert_kg_yn>
+            <p_key>fa44b511-9311-4f40-85a9-50833032c396</p_key>
+            <p_id>5952</p_id>
+            <p_returntype>xml
+            </p_returntype>
+        </item>
+    </condition>
+    <data>
+        <error_code>001</error_code>
+    </data>
+</document>
