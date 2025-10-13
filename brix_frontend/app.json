@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "brix1",
+    "slug": "brix1",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.sungjin.brix1",
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "INTERNET",
+        "CAMERA",
+        "READ_MEDIA_IMAGES"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "newArchEnabled": true 
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "b17adb8e-59f7-4fd9-ae53-55c9b6095d5f"
+      }
+    }
+  }
+}
